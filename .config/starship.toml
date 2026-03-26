@@ -2,15 +2,15 @@ add_newline = true
 command_timeout = 1000
 
 format = """
-$custom.workspace\
-$directory\
-$git_branch\
-$git_status\
-$python\
-$kubernetes\
-$cmd_duration\
-$line_break\
-$character"""
+${custom.workspace}\
+${directory}\
+${git_branch}\
+${git_status}\
+${python}\
+${kubernetes}\
+${cmd_duration}\
+${line_break}\
+${character}"""
 
 [character]
 success_symbol = "[>](bold green) "
@@ -19,11 +19,18 @@ vimcmd_symbol = "[<](bold blue) "
 
 [custom.workspace]
 command = """sh -c '
+# 1. Get the raw string
 h="${CODER_WORKSPACE_NAME:-$(hostname -s)}"
+
+# 2. Strip any trailing domain/suffix first
+h="${h%.workspace}"
 h="${h%.coder}"
+
+# 3. If it matches the Coder pattern, grab only the last part
 case "$h" in
   coder-*-*) h="${h##*-}" ;;
 esac
+
 printf "%s" "$h"
 '"""
 when = "true"
