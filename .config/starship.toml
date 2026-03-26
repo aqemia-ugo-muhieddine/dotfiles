@@ -35,7 +35,7 @@ printf "%s" "$h"
 '"""
 when = "true"
 style = "bold magenta"
-format = "[ws:$output]($style) "
+format = "[@ $output]($style) "
 
 [directory]
 style = "bold cyan"
@@ -45,7 +45,7 @@ read_only = " lock"
 read_only_style = "red"
 
 [git_branch]
-symbol = "git:"
+symbol = "git@"
 style = "bold yellow"
 format = " [$symbol$branch]($style)"
 
@@ -54,7 +54,7 @@ style = "yellow"
 format = "([$all_status$ahead_behind]($style))"
 
 [python]
-symbol = "venv:"
+symbol = "py@"
 style = "bold green"
 python_binary = ["python3", "python"]
 detect_extensions = ["py", "ipynb"]
