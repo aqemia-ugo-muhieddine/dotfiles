@@ -70,7 +70,7 @@ BASHRC
 fi
 
 # --- Git aliases ---
-git config --global alias.s 'status -sb'
+git config --global alias.s 'switch'
 git config --global alias.st 'status'
 git config --global alias.co 'checkout'
 git config --global alias.br 'branch'

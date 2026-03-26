@@ -51,6 +51,10 @@ if command -v gh >/dev/null 2>&1; then
   eval "$(gh completion -s zsh)"
 fi
 
+cd_plasma() {
+  cd "${HOME}/work/platform-research/series-expansion-affinity-prediction/2d-graph/plasma" || return 1
+}
+
 init-workspace() {
   local workspace_dir repo_url repo_name target_dir workspace_file
 

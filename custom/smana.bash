@@ -45,6 +45,10 @@ source ~/.bash_it/aliases/smana.bash
 export TF_PLUGIN_CACHE_DIR=$HOME/.terraform.d/plugin-cache
 export TG_PROVIDER_CACHE=true
 
+cd_plasma() {
+    cd "${HOME}/work/platform-research/series-expansion-affinity-prediction/2d-graph/plasma" || return 1
+}
+
 init-workspace() {
     local workspace_dir repo_url repo_name target_dir workspace_file
 

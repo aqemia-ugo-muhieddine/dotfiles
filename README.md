@@ -41,3 +41,7 @@ That command will:
 - clone `https://github.com/Aqemia/platform-research.git` into `$HOME/work/platform-research`
 - write `work.code-workspace` at `$HOME/work/work.code-workspace`
 - skip cloning and file creation if both already exist
+
+## Handy commands
+
+- `cd_plasma` jumps to `$HOME/work/platform-research/series-expansion-affinity-prediction/2d-graph/plasma`
