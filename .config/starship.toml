@@ -34,9 +34,9 @@ esac
 printf "%s" "$h"
 '"""
 when = "true"
-symbol = "ws:"
+symbol = "🌐 "
 style = "bold fg:#ff4fd8"
-format = "[${symbol}$output]($style) "
+format = "[$symbol$output]($style) "
 
 [directory]
 style = "bold cyan"
