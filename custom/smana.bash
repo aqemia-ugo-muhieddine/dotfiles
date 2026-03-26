@@ -44,3 +44,46 @@ source ~/.bash_it/aliases/smana.bash
 # Terragrunt cache
 export TF_PLUGIN_CACHE_DIR=$HOME/.terraform.d/plugin-cache
 export TG_PROVIDER_CACHE=true
+export INIT_WORKSPACE_DIR="${INIT_WORKSPACE_DIR:-$HOME/work}"
+export INIT_WORKSPACE_REPO="${INIT_WORKSPACE_REPO:-https://github.com/Aqemia/platform-research.git}"
+export INIT_WORKSPACE_BRANCH="${INIT_WORKSPACE_BRANCH:-}"
+
+init-workspace() {
+    local workspace_dir repo_url target_dir workspace_file branch
+
+    workspace_dir="${1:-$INIT_WORKSPACE_DIR}"
+    repo_url="${2:-$INIT_WORKSPACE_REPO}"
+    branch="${3:-$INIT_WORKSPACE_BRANCH}"
+
+    mkdir -p "$workspace_dir" || return 1
+    target_dir="${workspace_dir}"
+
+    if [[ ! -d "$target_dir/.git" ]]; then
+        if [[ -n "$branch" ]]; then
+            git clone --branch "$branch" "$repo_url" "$target_dir" || return 1
+        else
+            git clone "$repo_url" "$target_dir" || return 1
+        fi
+    fi
+
+    cd "$target_dir" || return 1
+    workspace_file="${target_dir}/work.code-workspace"
+
+    cat > "$workspace_file" <<EOF
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "editor.formatOnSave": true
+  }
+}
+EOF
+
+    echo "Workspace ready in ${target_dir}"
+    echo "VS Code workspace file: ${workspace_file}"
+}

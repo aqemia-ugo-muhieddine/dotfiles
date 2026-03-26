@@ -6,7 +6,7 @@ alias vi='vim'
 alias ex='vim'
 alias pstree='pstree -Ap'
 alias gcd='cd "$(git rev-parse --show-toplevel)"'
-alias gst='git status'
+alias gs='git status -sb'
 alias ga='git add'
 alias gc='git commit'
 alias gca='git commit --amend'
@@ -15,7 +15,6 @@ alias gb='git branch'
 alias gd='git diff'
 alias gl='git log --oneline --decorate --graph -20'
 
-# kubectl
 alias k='kubectl'
 alias kgp='kubectl get pods'
 alias kgs='kubectl get svc'
@@ -23,6 +22,5 @@ alias kgn='kubectl get nodes'
 alias kns='kubens'
 alias kctx='kubectx'
 
-# python / uv
 alias py='python3'
 alias uvr='uv run'

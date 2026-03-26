@@ -35,9 +35,12 @@ ln -sf "$HOME/.bash_it/completion/available/aliases.completion.bash" \
 # --- Symlink config files ---
 mkdir -p ~/.config ~/.bash_it/custom ~/.bash_it/aliases
 
+ln -sfn "$DOTFILES_DIR" "$HOME/.dotfiles"
+
 ln -sf "$DOTFILES_DIR/.config/starship.toml" ~/.config/starship.toml
 ln -sf "$DOTFILES_DIR/custom/smana.bash" ~/.bash_it/custom/smana.bash
 ln -sf "$DOTFILES_DIR/aliases/smana.bash" ~/.bash_it/aliases/smana.bash
+ln -sf "$DOTFILES_DIR/.zshrc" ~/.zshrc
 
 # --- Ensure .bash_profile sources .bashrc (login shells) ---
 ln -sf "$DOTFILES_DIR/.bash_profile" ~/.bash_profile
@@ -54,5 +57,15 @@ unset MAILCHECK
 source "$BASH_IT/bash_it.sh"
 BASHRC
 fi
+
+# --- Git aliases ---
+git config --global alias.s 'status -sb'
+git config --global alias.st 'status'
+git config --global alias.co 'checkout'
+git config --global alias.br 'branch'
+git config --global alias.ci 'commit'
+git config --global alias.ca 'commit --amend'
+git config --global alias.last 'log -1 --stat'
+git config --global alias.lg 'log --oneline --decorate --graph'
 
 echo "Dotfiles installed successfully."
