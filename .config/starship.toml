@@ -1,17 +1,51 @@
-add_newline = false
+add_newline = true
+command_timeout = 1000
 
-format = "$directory$git_branch$git_status$character"
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$kubernetes\
+$cmd_duration\
+$line_break\
+$character"""
 
 [character]
 success_symbol = "[>](bold green) "
 error_symbol = "[>](bold red) "
+vimcmd_symbol = "[<](bold blue) "
 
 [directory]
+style = "bold cyan"
 truncation_length = 3
 truncate_to_repo = false
+read_only = " lock"
+read_only_style = "red"
 
 [git_branch]
 symbol = "git:"
+style = "bold yellow"
+format = " [$symbol$branch]($style)"
 
 [git_status]
+style = "yellow"
+format = "([$all_status$ahead_behind]($style))"
+
+[python]
+symbol = "py:"
+style = "bold green"
+python_binary = ["python3", "python"]
+detect_extensions = ["py", "ipynb"]
+format = " [${symbol}${pyenv_prefix}(${version} )(${virtualenv})]($style)"
+
+[kubernetes]
 disabled = false
+symbol = "k8s:"
+style = "bold blue"
+format = " [${symbol}$context(::$namespace)]($style)"
+
+[cmd_duration]
+min_time = 500
+style = "dimmed white"
+format = " [took ${duration}]($style)"
