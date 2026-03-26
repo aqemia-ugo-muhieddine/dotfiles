@@ -26,8 +26,8 @@ if command -v gh &>/dev/null && ! complete -p gh &>/dev/null 2>&1; then
 fi
 
 # Go
-GOPATH=${HOME}/go
-PATH=${PATH}:${GOPATH}/bin
+export GOPATH="${HOME}/go"
+export PATH="${PATH}:${GOPATH}/bin"
 
 # Cargo (Rust)
 export PATH=$PATH:$HOME/.cargo/bin

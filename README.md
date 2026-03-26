@@ -13,8 +13,9 @@ Personal dotfiles for Coder workspaces.
 
 ```bash
 ./install.sh
-exec zsh
 ```
+
+Open a new terminal after install. Coder login shells will hand off to `zsh` automatically.
 
 ## Verify in a Coder workspace
 

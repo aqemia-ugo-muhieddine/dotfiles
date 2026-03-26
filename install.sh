@@ -23,7 +23,7 @@ ln -sf "$HOME/.bash_it/plugins/available/base.plugin.bash" \
        "$HOME/.bash_it/enabled/250---base.plugin.bash"
 
 # Completions
-for c in system bash-it docker git github-cli go kubectl terraform; do
+for c in bash-it docker git github-cli go kubectl terraform; do
     ln -sf "$HOME/.bash_it/completion/available/${c}.completion.bash" \
            "$HOME/.bash_it/enabled/350---${c}.completion.bash" 2>/dev/null || true
 done
@@ -44,6 +44,17 @@ ln -sf "$DOTFILES_DIR/.zshrc" ~/.zshrc
 
 # --- Ensure .bash_profile sources .bashrc (login shells) ---
 ln -sf "$DOTFILES_DIR/.bash_profile" ~/.bash_profile
+
+# --- Ensure interactive bash shells hand off to zsh ---
+if ! grep -q 'hand off interactive bash shells to zsh' ~/.bashrc 2>/dev/null; then
+    cat >> ~/.bashrc <<'BASHRC_ZSH'
+
+# hand off interactive bash shells to zsh
+if [[ $- == *i* ]] && command -v zsh >/dev/null 2>&1 && [[ -z "${ZSH_VERSION:-}" ]]; then
+  exec zsh -l
+fi
+BASHRC_ZSH
+fi
 
 # --- Ensure .bashrc loads bash-it ---
 if ! grep -q 'BASH_IT' ~/.bashrc 2>/dev/null; then
