@@ -85,6 +85,10 @@ init-workspace() {
   "folders": [
     {
       "path": "./platform-research"
+    },
+    {
+      "name": "plasma",
+      "path": "./platform-research/series-expansion-affinity-prediction/2d-graph/plasma"
     }
   ],
   "settings": {
