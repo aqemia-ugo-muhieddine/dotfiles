@@ -2,6 +2,7 @@ add_newline = true
 command_timeout = 1000
 
 format = """
+$hostname\
 $directory\
 $git_branch\
 $git_status\
@@ -15,6 +16,11 @@ $character"""
 success_symbol = "[>](bold green) "
 error_symbol = "[>](bold red) "
 vimcmd_symbol = "[<](bold blue) "
+
+[hostname]
+ssh_only = false
+style = "bold magenta"
+format = "[$hostname]($style) "
 
 [directory]
 style = "bold cyan"
@@ -33,11 +39,11 @@ style = "yellow"
 format = "([$all_status$ahead_behind]($style))"
 
 [python]
-symbol = "py:"
+symbol = "venv:"
 style = "bold green"
 python_binary = ["python3", "python"]
 detect_extensions = ["py", "ipynb"]
-format = " [${symbol}${pyenv_prefix}(${version} )(${virtualenv})]($style)"
+format = " [${symbol}${virtualenv}]($style)"
 
 [kubernetes]
 disabled = false
