@@ -34,8 +34,9 @@ esac
 printf "%s" "$h"
 '"""
 when = "true"
-style = "bold magenta"
-format = "[@ $output]($style) "
+symbol = "ws:"
+style = "bold fg:#ff4fd8"
+format = "[${symbol}$output]($style) "
 
 [directory]
 style = "bold cyan"
@@ -45,7 +46,7 @@ read_only = " lock"
 read_only_style = "red"
 
 [git_branch]
-symbol = "git@"
+symbol = "git:"
 style = "bold yellow"
 format = " [$symbol$branch]($style)"
 
@@ -54,7 +55,7 @@ style = "yellow"
 format = "([$all_status$ahead_behind]($style))"
 
 [python]
-symbol = "py@"
+symbol = "venv:"
 style = "bold green"
 python_binary = ["python3", "python"]
 detect_extensions = ["py", "ipynb"]
