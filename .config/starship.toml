@@ -2,7 +2,7 @@ add_newline = true
 command_timeout = 1000
 
 format = """
-$hostname\
+$custom.workspace\
 $directory\
 $git_branch\
 $git_status\
@@ -17,10 +17,18 @@ success_symbol = "[>](bold green) "
 error_symbol = "[>](bold red) "
 vimcmd_symbol = "[<](bold blue) "
 
-[hostname]
-ssh_only = false
+[custom.workspace]
+command = """sh -c '
+h="${CODER_WORKSPACE_NAME:-$(hostname -s)}"
+h="${h%.coder}"
+case "$h" in
+  coder-*-*) h="${h##*-}" ;;
+esac
+printf "%s" "$h"
+'"""
+when = "true"
 style = "bold magenta"
-format = "[$hostname]($style) "
+format = "[ws:$output]($style) "
 
 [directory]
 style = "bold cyan"
