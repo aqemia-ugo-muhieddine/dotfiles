@@ -32,6 +32,21 @@ ln -sf "$HOME/.bash_it/completion/available/system.completion.bash" \
 ln -sf "$HOME/.bash_it/completion/available/aliases.completion.bash" \
        "$HOME/.bash_it/enabled/800---aliases.completion.bash"
 
+# --- Zsh plugins ---
+mkdir -p "$HOME/.zsh"
+
+if [ ! -d "$HOME/.zsh/zsh-syntax-highlighting" ]; then
+    echo "Installing zsh-syntax-highlighting..."
+    git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git \
+        "$HOME/.zsh/zsh-syntax-highlighting"
+fi
+
+if [ ! -d "$HOME/.zsh/zsh-autosuggestions" ]; then
+    echo "Installing zsh-autosuggestions..."
+    git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git \
+        "$HOME/.zsh/zsh-autosuggestions"
+fi
+
 # --- Symlink config files ---
 mkdir -p ~/.config ~/.bash_it/custom ~/.bash_it/aliases
 
@@ -78,5 +93,11 @@ git config --global alias.ci 'commit'
 git config --global alias.ca 'commit --amend'
 git config --global alias.last 'log -1 --stat'
 git config --global alias.lg 'log --oneline --decorate --graph'
+
+# --- Claude Code native install (avoids sudo for auto-updates) ---
+if command -v claude >/dev/null 2>&1; then
+    echo "Installing Claude Code natively..."
+    claude install
+fi
 
 echo "Dotfiles installed successfully."

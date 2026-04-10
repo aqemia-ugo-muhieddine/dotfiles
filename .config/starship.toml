@@ -13,9 +13,9 @@ ${line_break}\
 ${character}"""
 
 [character]
-success_symbol = "[>](bold green) "
-error_symbol = "[>](bold red) "
-vimcmd_symbol = "[<](bold blue) "
+success_symbol = "[❯](bold green) "
+error_symbol = "[❯](bold red) "
+vimcmd_symbol = "[❮](bold blue) "
 
 [custom.workspace]
 command = """sh -c '
@@ -34,7 +34,7 @@ esac
 printf "%s" "$h"
 '"""
 when = "true"
-symbol = "🌐 "
+symbol = " "
 style = "bold fg:#ff4fd8"
 format = "[$symbol$output]($style) "
 
@@ -42,11 +42,11 @@ format = "[$symbol$output]($style) "
 style = "bold cyan"
 truncation_length = 3
 truncate_to_repo = false
-read_only = " lock"
+read_only = " 󰌾"
 read_only_style = "red"
 
 [git_branch]
-symbol = "git:"
+symbol = " "
 style = "bold yellow"
 format = " [$symbol$branch]($style)"
 
@@ -55,15 +55,15 @@ style = "yellow"
 format = "([$all_status$ahead_behind]($style))"
 
 [python]
-symbol = "venv:"
+symbol = " "
 style = "bold green"
 python_binary = ["python3", "python"]
 detect_extensions = ["py", "ipynb"]
 format = " [${symbol}${virtualenv}]($style)"
 
 [kubernetes]
-disabled = false
-symbol = "k8s:"
+disabled = true
+symbol = "󱃾 "
 style = "bold blue"
 format = " [${symbol}$context(::$namespace)]($style)"
 

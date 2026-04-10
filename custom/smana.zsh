@@ -106,3 +106,11 @@ EOF
 
 [[ -f "${HOME}/.fzf.zsh" ]] && source "${HOME}/.fzf.zsh"
 source "${HOME}/.dotfiles/aliases/smana.zsh"
+
+# Syntax highlighting (must be sourced before autosuggestions)
+[[ -d "${HOME}/.zsh/zsh-syntax-highlighting" ]] && \
+  source "${HOME}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# Autosuggestions (ghost-text from history)
+[[ -d "${HOME}/.zsh/zsh-autosuggestions" ]] && \
+  source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
