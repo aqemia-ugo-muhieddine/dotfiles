@@ -114,3 +114,27 @@ source "${HOME}/.dotfiles/aliases/smana.zsh"
 # Autosuggestions (ghost-text from history)
 [[ -d "${HOME}/.zsh/zsh-autosuggestions" ]] && \
   source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+
+  # Make `code` work in shells not launched by VS Code's Remote-SSH integration
+  if ! command -v code >/dev/null 2>&1; then
+    _vsc_cli=$(ls -td ~/.vscode-server/cli/servers/Stable-*/server/bin/remote-cli
+  2>/dev/null | head -1)
+    [[ -n "$_vsc_cli" ]] && PATH="$_vsc_cli:$PATH"
+    unset _vsc_cli
+  fi
+  if [[ -z "$VSCODE_IPC_HOOK_CLI" ]]; then
+    _vsc_sock=$(ls -t /tmp/vscode-ipc-*.sock 2>/dev/null | head -1)
+    [[ -S "$_vsc_sock" ]] && export VSCODE_IPC_HOOK_CLI="$_vsc_sock"
+    unset _vsc_sock
+  fi
+
+  # `code .` → open *.code-workspace if the directory has exactly one
+  code() {
+    local target="${1:-.}"
+    if [[ -d "$target" ]]; then
+      local ws=("$target"/*.code-workspace(N))
+      (( ${#ws[@]} == 1 )) && { command code "${ws[1]}" "${@:2}"; return; }
+    fi
+    command code "$@"
+  }
