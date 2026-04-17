@@ -46,7 +46,7 @@ export TF_PLUGIN_CACHE_DIR=$HOME/.terraform.d/plugin-cache
 export TG_PROVIDER_CACHE=true
 
 cd_plasma() {
-    cd "${HOME}/work/platform-research/series-expansion-affinity-prediction/2d-graph/plasma" || return 1
+    cd "${HOME}/work/platform-research/ml-training-workflows/plasma" || return 1
 }
 
 init-workspace() {
@@ -79,6 +79,10 @@ init-workspace() {
   "folders": [
     {
       "path": "./platform-research"
+    },
+    {
+      "name": "new-plasma",
+      "path": "./platform-research/ml-training-workflows/plasma"
     }
   ],
   "settings": {

@@ -52,7 +52,7 @@ if command -v gh >/dev/null 2>&1; then
 fi
 
 cd_plasma() {
-  cd "${HOME}/work/platform-research/series-expansion-affinity-prediction/2d-graph/plasma" || return 1
+  cd "${HOME}/work/platform-research/ml-training-workflows/plasma" || return 1
 }
 
 init-workspace() {
