@@ -124,7 +124,7 @@ source "${HOME}/.dotfiles/aliases/smana.zsh"
     unset _vsc_cli
   fi
   if [[ -z "$VSCODE_IPC_HOOK_CLI" ]]; then
-    _vsc_sock=$(ls -t /tmp/vscode-ipc-*.sock 2>/dev/null | head -1)
+    _vsc_sock=$(ls -t /tmp/vscode-ipc-*.sock(N) 2>/dev/null | head -1)
     [[ -S "$_vsc_sock" ]] && export VSCODE_IPC_HOOK_CLI="$_vsc_sock"
     unset _vsc_sock
   fi
