@@ -7,3 +7,6 @@ if [[ -d "${ZSH}" ]]; then
 fi
 
 source "${HOME}/.dotfiles/custom/smana.zsh"
+
+# Source machine-local overrides (not in dotfiles repo)
+[[ -f "${HOME}/.zshrc.local" ]] && source "${HOME}/.zshrc.local"
