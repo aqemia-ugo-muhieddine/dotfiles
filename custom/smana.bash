@@ -41,6 +41,9 @@ source ~/.bash_it/aliases/smana.bash
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# CodeArtifact env (Aqemia private package registry for uv/pip)
+[ -f ~/.codeartifact.env ] && source ~/.codeartifact.env
+
 # Terragrunt cache
 export TF_PLUGIN_CACHE_DIR=$HOME/.terraform.d/plugin-cache
 export TG_PROVIDER_CACHE=true

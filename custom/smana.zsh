@@ -105,6 +105,7 @@ EOF
 }
 
 [[ -f "${HOME}/.fzf.zsh" ]] && source "${HOME}/.fzf.zsh"
+[[ -f "${HOME}/.codeartifact.env" ]] && source "${HOME}/.codeartifact.env"
 source "${HOME}/.dotfiles/aliases/smana.zsh"
 
 # Syntax highlighting (must be sourced before autosuggestions)
